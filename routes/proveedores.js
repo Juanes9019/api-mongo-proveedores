@@ -1,10 +1,7 @@
-const { Router } = require('express'); // Importa la función Router de express para crear un router
+const { Router } = require('express');
+const router = Router();
+const { proveedoresGet, proveedoresPost, proveedoresPut, proveedoresDelete, PromGet } = require('../controllers/proveedor');
 
-const router = Router(); // Crea una instancia de Router
-const { proveedoresGet, proveedoresPost, proveedoresPut, proveedoresDelete, PromGet } = 
-require('../controllers/proveedor'); // Importa los controladores desde el archivo '../controllers/proveedore'
-
-// Define rutas y asigna controladores a cada ruta
 // Ruta para obtener todos los proveedores (GET '/')
 router.get('/', proveedoresGet);
 
@@ -14,11 +11,10 @@ router.get('/promedio', PromGet);
 // Ruta para crear un nuevo proveedor (POST '/')
 router.post('/', proveedoresPost);
 
-// Ruta para actualizar un proveedor existente (PUT '/')
-router.put('/', proveedoresPut);
+// Ruta para actualizar un proveedor existente (PUT '/:idProveedor')
+router.put('/:idProveedor', proveedoresPut);
 
-// Ruta para eliminar un proveedor existente (DELETE '/')
-router.delete('/', proveedoresDelete);
+// Ruta para eliminar un proveedor existente (DELETE '/:idProveedor')
+router.delete('/:idProveedor', proveedoresDelete);
 
-// Exporta el router para que esté disponible para otros módulos
 module.exports = router;

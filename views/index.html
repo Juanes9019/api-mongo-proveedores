@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proveedores</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID Proveedor</th>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Email</th>
+      <th>Ubicación</th>
+      <th>Acciones</th> <!-- Nueva columna para acciones -->
+    </tr>
+  </thead>
+  <tbody id="proveedoresTableBody">
+  </tbody>
+</table>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('https://api-mongo-proveedores.onrender.com/api/proveedores')
+    .then(response => response.json())
+    .then(data => {
+      const proveedores = data.proveedores;
+      const tableBody = document.getElementById("proveedoresTableBody");
+
+      proveedores.forEach(proveedor => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${proveedor.id_proveedor}</td>
+          <td>${proveedor.nombre}</td>
+          <td>${proveedor.telefono}</td>
+          <td>${proveedor.email}</td>
+          <td>${proveedor.ubicacion}</td>
+          <td>
+            <button onclick="editarProveedor('${proveedor._id}')">Editar</button>
+            <button onclick="eliminarProveedor('${proveedor._id}')">Eliminar</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+});
+
+function editarProveedor(proveedorId) {
+  // Aquí puedes implementar la lógica para editar el proveedor con el ID proporcionado
+  console.log('Editar proveedor con ID:', proveedorId);
+}
+
+function eliminarProveedor(proveedorId) {
+  // Aquí puedes implementar la lógica para eliminar el proveedor con el ID proporcionado
+  console.log('Eliminar proveedor con ID:', proveedorId);
+}
+</script>
+
+</body>
+</html>

@@ -8,7 +8,7 @@ class Server{
     constructor(){
         this.app = express(); // Inicializa la aplicación express
         this.port = process.env.PORT; // Obtiene el puerto de conexión desde las variables de entorno
-        this.usuariosPath = '/api/usuarios'; // Define la ruta base para las operaciones relacionadas con usuarios
+        this.proveedoresPath = '/api/proveedores'; // Define la ruta base para las operaciones relacionadas con proveedores
         this.authPath = '/api/auth'; // Define la ruta base para las operaciones de autenticación
         this.middlewares(); // Configura los middlewares de la aplicación
         this.routes(); // Configura las rutas de la aplicación
@@ -34,7 +34,7 @@ middlewares() {
 
 routes() {
     // Configura las rutas de la aplicación
-    this.app.use(this.usuariosPath, require('../routes/usuarios')); // Ruta para las operaciones relacionadas con usuarios
+    this.app.use(this.proveedoresPath, require('../routes/proveedores')); // Ruta para las operaciones relacionadas con usuarios
     this.app.use(this.authPath, require('../routes/auth')); // Ruta para las operaciones de autenticación
 }
 

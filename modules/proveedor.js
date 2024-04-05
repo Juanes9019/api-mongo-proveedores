@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose'); // Importa las funciones Schema y model de mongoose para definir esquemas y modelos de datos
 
-// Define el esquema del modelo Usuario
-const UsuarioSchema = Schema({
+// Define el esquema del modelo Proveedor
+const ProveedorSchema = Schema({
     // Define que el campo nombre es obligatorio
     nombre: { type: String, required: [true, 'El nombre es obligatorio'] },
 
@@ -24,5 +24,5 @@ const UsuarioSchema = Schema({
     estado: {type: Boolean, default: true, required: [true, 'El estado es obligatorio'] },
 })
 
-// Crea y exporta el modelo Usuario a partir del esquema UsuarioSchema
-module.exports = model('Usuario', UsuarioSchema)
+// Crea y exporta el modelo Proveedor a partir del esquema ProveedorSchema
+module.exports = model('Proveedor', ProveedorSchema)

@@ -4,7 +4,7 @@ const {Schema, model} = require('mongoose'); // Importa las funciones Schema y m
 const ProveedorSchema = Schema({
 
     // Define que el campo id_proveedor es obligatorio
-    id_proveedor: { type: Number, required: [true, 'El id del proveedor es obligatorio'] },
+    id_proveedor: { type: Number, required: [true, 'El id del proveedor es obligatorio'],unique: true },
 
     // Define que el campo nombre es obligatorio
     nombre: { type: String, required: [true, 'El nombre es obligatorio'] },

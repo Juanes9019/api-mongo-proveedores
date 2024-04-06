@@ -13,10 +13,10 @@ const proveedoresGet = async (req, res = response) => {
     }
 }
 
-const proveedoresPost = async(req, res = response) => {
+const proveedoresPost = async (req, res = response) => {
     try {
-        const {nombre, telefono, email, ubicacion} = req.body;
-        const proveedor = new Proveedor({nombre, telefono, email, ubicacion});
+        const { id_proveedor, nombre, telefono, email, ubicacion } = req.body;
+        const proveedor = new Proveedor({ id_proveedor, nombre, telefono, email, ubicacion });
         await proveedor.save();
         res.json({
             msg: 'Proveedor creado',
@@ -24,9 +24,10 @@ const proveedoresPost = async(req, res = response) => {
         });
     } catch (error) {
         console.error(error);
-        res.status(500).json({msg: 'Error en el servidor'});
+        res.status(500).json({ msg: 'Error en el servidor' });
     }
 }
+
 // Controlador para actualizar un proveedor existente
 const proveedoresPut = async (req, res = response) => {
     try {

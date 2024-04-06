@@ -9,9 +9,9 @@ router.get('/', proveedoresGet);
 router.post('/', proveedoresPost);
 
 // Ruta para actualizar un proveedor existente (PUT '/:idProveedor')
-router.put('/:_id', proveedoresPut);
+router.put('/:id_proveedor', proveedoresPut); // Cambiar _id a id_proveedor
 
 // Ruta para eliminar un proveedor existente (DELETE '/:idProveedor')
-router.delete('/:_id', proveedoresDelete);
+router.delete('/:id_proveedor', proveedoresDelete); // Cambiar _id a id_proveedor
 
 module.exports = router;

@@ -27,12 +27,19 @@ const proveedoresPost = async(req, res = response) => {
         res.status(500).json({msg: 'Error en el servidor'});
     }
 }
-
-const proveedoresPut = async(req, res = response) => {
+// Controlador para actualizar un proveedor existente
+const proveedoresPut = async (req, res = response) => {
     try {
-        const { id } = req.params; // Cambia _id a id
+        const { id_proveedor } = req.params; // Cambiar _id a id_proveedor
         const { nombre, telefono, email, ubicacion } = req.body;
-        const proveedor = await Proveedor.findByIdAndUpdate(id, { nombre, telefono, email, ubicacion }, { new: true });
+        const proveedor = await Proveedor.findOneAndUpdate({ id_proveedor }, { nombre, telefono, email, ubicacion }, { new: true });
+
+        if (!proveedor) {
+            return res.status(404).json({
+                msg: 'Proveedor no encontrado'
+            });
+        }
+
         res.json({
             msg: 'Proveedor actualizado',
             proveedor
@@ -43,10 +50,18 @@ const proveedoresPut = async(req, res = response) => {
     }
 }
 
-const proveedoresDelete = async(req, res = response) => {
+// Controlador para eliminar un proveedor existente
+const proveedoresDelete = async (req, res = response) => {
     try {
-        const { id } = req.params; // Cambia _id a id
-        const proveedor = await Proveedor.findByIdAndDelete(id);
+        const { id_proveedor } = req.params; // Cambiar _id a id_proveedor
+        const proveedor = await Proveedor.findOneAndDelete({ id_proveedor });
+
+        if (!proveedor) {
+            return res.status(404).json({
+                msg: 'Proveedor no encontrado'
+            });
+        }
+
         res.json({
             msg: 'Proveedor eliminado',
             proveedor
@@ -56,7 +71,6 @@ const proveedoresDelete = async(req, res = response) => {
         res.status(500).json({ msg: 'Error en el servidor' });
     }
 }
-
 
 module.exports ={
     proveedoresGet,

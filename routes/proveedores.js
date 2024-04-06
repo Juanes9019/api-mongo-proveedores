@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const { proveedoresGet, proveedoresPost, proveedoresPut, proveedoresDelete, PromGet } = require('../controllers/proveedor');
+const { proveedoresGet, proveedoresPost, proveedoresPut, proveedoresDelete } = require('../controllers/proveedor');
 
 // Ruta para obtener todos los proveedores (GET '/')
 router.get('/', proveedoresGet);

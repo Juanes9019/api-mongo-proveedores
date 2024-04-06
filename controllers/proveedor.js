@@ -1,5 +1,4 @@
 const {response} = require('express');
-const bcrypt = require('bcryptjs');
 const Proveedor = require('../modules/proveedor');
 
 const proveedoresGet = async (req, res = response) => {
@@ -31,22 +30,22 @@ const proveedoresPost = async(req, res = response) => {
 
 const proveedoresPut = async(req, res = response) => {
     try {
-        const {id} = req.params;
-        const {nombre, telefono, email, ubicacion} = req.body;
-        const proveedor = await Proveedor.findByIdAndUpdate(id, {nombre, telefono, email, ubicacion}, {new: true});
+        const { id } = req.params; // Cambia _id a id
+        const { nombre, telefono, email, ubicacion } = req.body;
+        const proveedor = await Proveedor.findByIdAndUpdate(id, { nombre, telefono, email, ubicacion }, { new: true });
         res.json({
             msg: 'Proveedor actualizado',
             proveedor
         });
     } catch (error) {
         console.error(error);
-        res.status(500).json({msg: 'Error en el servidor'});
+        res.status(500).json({ msg: 'Error en el servidor' });
     }
 }
 
 const proveedoresDelete = async(req, res = response) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params; // Cambia _id a id
         const proveedor = await Proveedor.findByIdAndDelete(id);
         res.json({
             msg: 'Proveedor eliminado',
@@ -54,9 +53,10 @@ const proveedoresDelete = async(req, res = response) => {
         });
     } catch (error) {
         console.error(error);
-        res.status(500).json({msg: 'Error en el servidor'});
+        res.status(500).json({ msg: 'Error en el servidor' });
     }
 }
+
 
 module.exports ={
     proveedoresGet,

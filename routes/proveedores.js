@@ -12,9 +12,9 @@ router.get('/promedio', PromGet);
 router.post('/', proveedoresPost);
 
 // Ruta para actualizar un proveedor existente (PUT '/:idProveedor')
-router.put('/:id_proveedor', proveedoresPut);
+router.put('/:_id', proveedoresPut);
 
 // Ruta para eliminar un proveedor existente (DELETE '/:idProveedor')
-router.delete('/:id_proveedor', proveedoresDelete);
+router.delete('/:_id', proveedoresDelete);
 
 module.exports = router;

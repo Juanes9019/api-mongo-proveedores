@@ -5,9 +5,6 @@ const { proveedoresGet, proveedoresPost, proveedoresPut, proveedoresDelete, Prom
 // Ruta para obtener todos los proveedores (GET '/')
 router.get('/', proveedoresGet);
 
-// Ruta para obtener el promedio de proveedores (GET '/promedio')
-router.get('/promedio', PromGet);
-
 // Ruta para crear un nuevo proveedor (POST '/')
 router.post('/', proveedoresPost);
 
